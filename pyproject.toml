@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "discordbot"
+version = "0.1.0"
+description = ""
+authors = ["hagd <hagd0520@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.12.8"
+yt-dlp = {extras = ["default"], version = "^2024.12.13"}
+discord-py = {extras = ["voice"], version = "^2.4.0"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
