@@ -1,14 +1,13 @@
 FROM python:3.12.8-slim-bookworm
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
 WORKDIR /app
 
 RUN apt-get update
 RUN apt-get install -y ffmpeg
 
-RUN pip install poetry
-RUN poetry config virtualenvs.in-project true
-COPY pyproject.toml poetry.lock ./
-RUN poetry install --no-root
+COPY pyproject.toml uv.lock ./
+RUN uv sync
 COPY . .
 
 CMD [".venv/bin/python", "app.py"]
